@@ -27,7 +27,7 @@ void Player::onDraw(Graphics& g)
 {
     HPEN pen = CreatePen(PS_SOLID, 2, RGB(0,255,0));
     g.setPen(pen);
-    g.drawRectangle(_pos.x - CHARASIZE * 3, _pos.y - CHARASIZE / 2, _pos.x + CHARASIZE * 3, _pos.y + CHARASIZE / 2);
+    g.drawRectangle(_pos.x - BARSIZE_X, _pos.y - BARSIZE_Y, _pos.x + BARSIZE_X, _pos.y + BARSIZE_Y);
     g.setPen(NULL);
     DeleteObject(pen);
 }

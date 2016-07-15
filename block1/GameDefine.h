@@ -13,8 +13,8 @@
 
 // ÉQÅ[ÉÄñ{ëÃä÷åW
 #define CHARASIZE 24
-#define BAR_X 24
-#define BAR_Y 24
+#define BARSIZE_X 72
+#define BARSIZE_Y 12
 
 #define PLAYER_VELOCITY 5
 #define ENEMY_VELOCITY 5
