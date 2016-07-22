@@ -13,6 +13,8 @@ public:
 
     virtual void onTick();
     virtual void onDraw(Graphics& g);
+    virtual double getVectorX();
+    virtual double getVectorY();
 
 private:
     SceneBase& _scene;

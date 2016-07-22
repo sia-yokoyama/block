@@ -17,6 +17,6 @@
 #define BARSIZE_Y 12
 
 #define PLAYER_VELOCITY 5
-#define ENEMY_VELOCITY 5
+#define ENEMY_VELOCITY 3
 
 #endif // _GAME_DEFINE_H_

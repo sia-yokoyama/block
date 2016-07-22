@@ -28,3 +28,13 @@ void Enemy::onDraw(Graphics& g)
     g.setPen(NULL);
     DeleteObject(pen);
 }
+
+double Enemy::getVectorX()
+{
+    return getPos().x - CHARASIZE;
+}
+
+double Enemy::getVectorY()
+{
+    return getPos().y - CHARASIZE;
+}

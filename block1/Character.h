@@ -14,6 +14,8 @@ public:
 
     virtual void setPos(const Vector2Df& pos);
     virtual Vector2Df getPos() const;
+    virtual double getVectorX() = 0;
+    virtual double getVectorY() = 0;
 
 protected:
     Vector2Df _pos;

@@ -31,3 +31,13 @@ void Player::onDraw(Graphics& g)
     g.setPen(NULL);
     DeleteObject(pen);
 }
+
+double Player::getVectorX()
+{
+    return getPos().x - BARSIZE_X;
+}
+
+double Player::getVectorY()
+{
+    return getPos().y - BARSIZE_Y;
+}
