@@ -14,7 +14,7 @@ public:
     virtual void onRelease();
     virtual void onTick();
     virtual void onDraw(Graphics& g);
-    virtual void collisionDetection();
+    virtual void collisionDetection(Vector2Df V_1, Vector2Df V_2);
     virtual void collisionDetectionBar();
 
     virtual Player& getPlayer();

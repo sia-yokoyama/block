@@ -53,19 +53,12 @@ Player&SceneGame::getPlayer()
     return _player;
 }
 
-void SceneGame::collisionDetection()
+void SceneGame::collisionDetection(Vector2Df V_1, Vector2Df V_2)
 {
-
-}
-
-void SceneGame::collisionDetectionBar()
-{
-    Vector2Df bar_lt = _player.getPos() + Vector2Df(-BARSIZE_X , -BARSIZE_Y);
-    Vector2Df bar_rt = _player.getPos() + Vector2Df(BARSIZE_X , -BARSIZE_Y);
     Vector2Df ball = _enemy.getPos();
 
-    Vector2Df bar_t = bar_rt - bar_lt;
-    Vector2Df lt_ball = ball - bar_lt;
+    Vector2Df bar_t = V_1 - V_2;
+    Vector2Df lt_ball = ball - V_2;
 
     double cos_t = bar_t * lt_ball / (bar_t.length() * lt_ball.length());
     double theta = acos(cos_t);
@@ -80,4 +73,19 @@ void SceneGame::collisionDetectionBar()
         kill();
         GameMain::getInstance().getInput().reset();
     }
+
+}
+
+void SceneGame::collisionDetectionBar()
+{
+    Vector2Df bar_lt = _player.getPos() + Vector2Df(-BARSIZE_X , -BARSIZE_Y);
+    Vector2Df bar_rt = _player.getPos() + Vector2Df(BARSIZE_X , -BARSIZE_Y);
+
+    collisionDetection(bar_lt, bar_rt);
+
+    bar_lt = _player.getPos() - Vector2Df(-BARSIZE_X , -BARSIZE_Y);
+    bar_rt = _player.getPos() - Vector2Df(BARSIZE_X , -BARSIZE_Y);
+
+    collisionDetection(bar_lt, bar_rt);
+
 }
