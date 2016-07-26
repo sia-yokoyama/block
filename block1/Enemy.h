@@ -18,6 +18,8 @@ public:
     virtual void turnX();
     virtual void turnY();
 
+
+
 private:
     SceneBase& _scene;
     int add_x;

@@ -3,6 +3,7 @@
 #include "Vector2D.h"
 
 #include <windows.h>
+#include <list>
 
 #include "GameMain.h"
 #include "TaskManager.h"
@@ -40,7 +41,8 @@ void SceneGame::onTick()
     _player.onTick();
     _enemy.onTick();
 
-    collisionDetectionBar();
+//    collisionDetectionBar();
+    _player.collisionDetection(&_enemy);
     collisionDetectionWall();
     collisionDetectionBlock();
 }

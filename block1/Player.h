@@ -2,6 +2,7 @@
 #define _PLAYER_H_
 
 #include "Character.h"
+#include "Enemy.h"
 
 class SceneBase;
 
@@ -15,6 +16,8 @@ public:
     virtual void onDraw(Graphics& g);
     virtual double getVectorX();
     virtual double getVectorY();
+
+    virtual void collisionDetection(Enemy *ball);
 
 private:
     SceneBase& _scene;

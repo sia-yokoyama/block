@@ -3,6 +3,7 @@
 
 #include "Graphics.h"
 #include "Vector2D.h"
+#include "GameDefine.h"
 
 class Character
 {
@@ -16,6 +17,8 @@ public:
     virtual Vector2Df getPos() const;
     virtual double getVectorX() = 0;
     virtual double getVectorY() = 0;
+
+    boolean collisionDetection(Vector2Df V_1, Vector2Df V_2, Vector2Df ball);
 
 protected:
     Vector2Df _pos;
