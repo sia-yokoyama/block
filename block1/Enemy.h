@@ -15,10 +15,15 @@ public:
     virtual void onDraw(Graphics& g);
     virtual double getVectorX();
     virtual double getVectorY();
+    virtual void turnX();
+    virtual void turnY();
 
 private:
     SceneBase& _scene;
-
+    int add_x;
+    int add_y;
+    virtual void setTurnX();
+    virtual void setTurnY();
 };
 
 #endif // _ENEMY_H_
