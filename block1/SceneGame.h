@@ -4,6 +4,7 @@
 #include "SceneBase.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Block.h"
 
 class SceneGame : public SceneBase
 {
@@ -17,12 +18,14 @@ public:
     virtual void collisionDetection(Vector2Df V_1, Vector2Df V_2, int turn_V);
     virtual void collisionDetectionBar();
     virtual void collisionDetectionWall();
+    virtual void collisionDetectionBlock();
 
     virtual Player& getPlayer();
 
 private:
     Player _player;
     Enemy  _enemy;
+    Block  _block;
 
 };
 

@@ -11,6 +11,7 @@
 SceneGame::SceneGame()
     : _player(*this)
     , _enemy(*this)
+    , _block(*this)
 {
 }
 
@@ -22,6 +23,7 @@ bool SceneGame::onInit()
 {
     _player.setPos(Vector2Df(DWIDTH / 2, DHEIGHT - 100));
     _enemy.setPos(Vector2Df(DWIDTH / 2, 300));
+    _block.setPos(Vector2Df(DWIDTH / 2, 200));
 
     TaskManager::getInstance().addDrawTask(this, TASK_PRIORITY_SCENE);
 
@@ -40,12 +42,14 @@ void SceneGame::onTick()
 
     collisionDetectionBar();
     collisionDetectionWall();
+    collisionDetectionBlock();
 }
 
 void SceneGame::onDraw(Graphics& g)
 {
     _player.onDraw(g);
     _enemy.onDraw(g);
+    _block.onDraw(g);
 }
 
 Player&SceneGame::getPlayer()
@@ -97,6 +101,29 @@ void SceneGame::collisionDetectionWall()
     wall_lb = Vector2Df(0, DHEIGHT);
 
     collisionDetection(wall_lt, wall_lb, 5);
+}
+
+void SceneGame::collisionDetectionBlock()
+{
+    Vector2Df bar_lt = _block.getPos() + Vector2Df(-BARSIZE_X , -BARSIZE_Y);
+    Vector2Df bar_rt = _block.getPos() + Vector2Df(BARSIZE_X , -BARSIZE_Y);
+
+    collisionDetection(bar_lt, bar_rt, 5);
+
+    bar_lt = _block.getPos() - Vector2Df(-BARSIZE_X , -BARSIZE_Y);
+    bar_rt = _block.getPos() - Vector2Df(BARSIZE_X , -BARSIZE_Y);
+
+    collisionDetection(bar_lt, bar_rt, 5);
+
+    bar_lt = _block.getPos() + Vector2Df(-BARSIZE_X , -BARSIZE_Y);
+    bar_rt = _block.getPos() + Vector2Df(-BARSIZE_X , BARSIZE_Y);
+
+    collisionDetection(bar_lt, bar_rt, 5);
+
+    bar_lt = _block.getPos() + Vector2Df(BARSIZE_X , -BARSIZE_Y);
+    bar_rt = _block.getPos() + Vector2Df(BARSIZE_X , BARSIZE_Y);
+
+    collisionDetection(bar_lt, bar_rt, 5);
 }
 
 void SceneGame::collisionDetection(Vector2Df V_1, Vector2Df V_2, int turn_V)
