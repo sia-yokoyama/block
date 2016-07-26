@@ -22,6 +22,7 @@ public:
 
 private:
     SceneBase& _scene;
+    boolean start_flg;
     int add_x;
     int add_y;
     virtual void setTurnX();

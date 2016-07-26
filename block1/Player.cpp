@@ -19,8 +19,8 @@ void Player::onTick()
     Input& in = GameMain::getInstance().getInput();
     if (in.isDown(Input::KEY_LEFT) ) _pos.x = (_pos.x - PLAYER_VELOCITY > 0) ? _pos.x - PLAYER_VELOCITY : 0;
     if (in.isDown(Input::KEY_RIGHT)) _pos.x = (_pos.x + PLAYER_VELOCITY < DWIDTH - 1) ? _pos.x + PLAYER_VELOCITY : DWIDTH - 1;
-    if (in.isDown(Input::KEY_UP)   ) _pos.y = (_pos.y - PLAYER_VELOCITY > 0) ? _pos.y - PLAYER_VELOCITY : 0;
-    if (in.isDown(Input::KEY_DOWN) ) _pos.y = (_pos.y + PLAYER_VELOCITY < DHEIGHT - 1) ? _pos.y + PLAYER_VELOCITY : DHEIGHT - 1;
+//    if (in.isDown(Input::KEY_UP)   ) _pos.y = (_pos.y - PLAYER_VELOCITY > 0) ? _pos.y - PLAYER_VELOCITY : 0;
+//    if (in.isDown(Input::KEY_DOWN) ) _pos.y = (_pos.y + PLAYER_VELOCITY < DHEIGHT - 1) ? _pos.y + PLAYER_VELOCITY : DHEIGHT - 1;
 }
 
 void Player::onDraw(Graphics& g)

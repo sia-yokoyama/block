@@ -11,7 +11,8 @@ Enemy::Enemy(SceneBase& scene)
     , _scene(scene)
 {
     add_x = ENEMY_VELOCITY;
-    add_y = ENEMY_VELOCITY;
+    add_y = -ENEMY_VELOCITY;
+    start_flg = false;
 }
 
 Enemy::~Enemy()
@@ -20,8 +21,15 @@ Enemy::~Enemy()
 
 void Enemy::onTick()
 {
-    _pos.x += add_x;
-    _pos.y += add_y;
+    if (start_flg == false) {
+        Input& in = GameMain::getInstance().getInput();
+        if (in.isDown(Input::KEY_LEFT) ) _pos.x = (_pos.x - PLAYER_VELOCITY > 0) ? _pos.x - PLAYER_VELOCITY : 0;
+        if (in.isDown(Input::KEY_RIGHT)) _pos.x = (_pos.x + PLAYER_VELOCITY < DWIDTH - 1) ? _pos.x + PLAYER_VELOCITY : DWIDTH - 1;
+        if (in.isDown(Input::KEY_UP)   ) start_flg = true;
+    } else {
+        _pos.x += add_x;
+        _pos.y += add_y;
+    }
 }
 
 void Enemy::onDraw(Graphics& g)
