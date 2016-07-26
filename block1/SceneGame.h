@@ -6,6 +6,8 @@
 #include "Enemy.h"
 #include "Block.h"
 
+#include <list>
+
 class SceneGame : public SceneBase
 {
 public:
@@ -21,7 +23,7 @@ public:
 private:
     Player _player;
     Enemy  _enemy;
-    Block  _block;
+    std::list<Block*> _blocklist;
 
 };
 
