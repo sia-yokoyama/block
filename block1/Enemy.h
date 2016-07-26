@@ -18,7 +18,7 @@ public:
     virtual void turnX();
     virtual void turnY();
 
-
+    virtual boolean collisionDetectionWall();
 
 private:
     SceneBase& _scene;

@@ -2,6 +2,7 @@
 #define _BLOCK_H_
 
 #include "Character.h"
+#include "Enemy.h"
 
 class SceneBase;
 

@@ -35,3 +35,4 @@ double Block::getVectorY()
 {
     return getPos().y - BARSIZE_Y;
 }
+

@@ -41,9 +41,13 @@ void SceneGame::onTick()
     _player.onTick();
     _enemy.onTick();
 
+    if (_enemy.collisionDetectionWall()) {
+        kill();
+        GameMain::getInstance().getInput().reset();
+    }
 //    collisionDetectionBar();
     _player.collisionDetection(&_enemy);
-    collisionDetectionWall();
+//    collisionDetectionWall();
     collisionDetectionBlock();
 }
 

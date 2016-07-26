@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "GameMain.h"
 
 #include "SceneGame.h"
 
@@ -19,9 +20,6 @@ Enemy::~Enemy()
 
 void Enemy::onTick()
 {
-//    _pos += ((((SceneGame&)_scene).getPlayer().getPos() - _pos).ev() * ENEMY_VELOCITY);
-    //setTurnX();
-    //setTurnY();
     _pos.x += add_x;
     _pos.y += add_y;
 }
@@ -67,4 +65,31 @@ void Enemy::turnX()
 void Enemy::turnY()
 {
     add_y *= -1;
+}
+
+boolean Enemy::collisionDetectionWall()
+{
+    Vector2Df ball = getPos();
+
+    Vector2Df wall_lt = Vector2Df(0, DHEIGHT);
+    Vector2Df wall_lb = Vector2Df(0, 0);
+    if (Character::collisionDetection(wall_lt, wall_lb, ball)) {
+        turnX();
+    }
+
+    wall_lt = Vector2Df(DWIDTH, 0);
+    wall_lb = Vector2Df(DWIDTH, DHEIGHT);
+    if (Character::collisionDetection(wall_lt, wall_lb, ball)) {
+        turnX();
+    }
+
+    wall_lt = Vector2Df(DWIDTH, 0);
+    wall_lb = Vector2Df(0, 0);
+    if (Character::collisionDetection(wall_lt, wall_lb, ball)) {
+        turnY();
+    }
+
+    wall_lt = Vector2Df(DWIDTH, DHEIGHT);
+    wall_lb = Vector2Df(0, DHEIGHT);
+    return Character::collisionDetection(wall_lt, wall_lb, ball);
 }
