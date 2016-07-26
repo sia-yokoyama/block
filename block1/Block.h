@@ -17,6 +17,8 @@ public:
     virtual double getVectorX();
     virtual double getVectorY();
 
+    virtual boolean collisionDetection(Enemy *ball);
+
 private:
     SceneBase& _scene;
 

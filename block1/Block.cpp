@@ -36,3 +36,38 @@ double Block::getVectorY()
     return getPos().y - BARSIZE_Y;
 }
 
+boolean Block::collisionDetection(Enemy *ball)
+{
+    Vector2Df v_ball = ball->getPos();
+    boolean collision = false;
+
+    Vector2Df bar_lt = getPos() + Vector2Df(-BARSIZE_X , -BARSIZE_Y);
+    Vector2Df bar_rt = getPos() + Vector2Df(BARSIZE_X , -BARSIZE_Y);
+    if (Character::collisionDetection(bar_lt, bar_rt, v_ball)) {
+        ball->turnY();
+        collision = true;
+    }
+
+    bar_lt = getPos() - Vector2Df(-BARSIZE_X , -BARSIZE_Y);
+    bar_rt = getPos() - Vector2Df(BARSIZE_X , -BARSIZE_Y);
+    if (Character::collisionDetection(bar_lt, bar_rt, v_ball)) {
+        ball->turnY();
+        collision = true;
+    }
+
+    bar_lt = getPos() + Vector2Df(-BARSIZE_X , -BARSIZE_Y);
+    bar_rt = getPos() + Vector2Df(-BARSIZE_X , BARSIZE_Y);
+    if (Character::collisionDetection(bar_lt, bar_rt, v_ball)) {
+        ball->turnX();
+        collision = true;
+    }
+
+    bar_lt = getPos() + Vector2Df(BARSIZE_X , -BARSIZE_Y);
+    bar_rt = getPos() + Vector2Df(BARSIZE_X , BARSIZE_Y);
+    if (Character::collisionDetection(bar_lt, bar_rt, v_ball)) {
+        ball->turnX();
+        collision = true;
+    }
+
+    return collision;
+}
