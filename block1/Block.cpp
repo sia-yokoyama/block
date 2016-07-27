@@ -15,6 +15,10 @@ Block::~Block()
 
 void Block::onTick()
 {
+    _pos.x--;
+    if (_pos.x + BLOCKSIZE_X <= 0) {
+        _pos.x = DWIDTH + BLOCKSIZE_X;
+    }
 }
 
 void Block::onDraw(Graphics& g)

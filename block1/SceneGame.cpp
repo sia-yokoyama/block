@@ -13,7 +13,7 @@ SceneGame::SceneGame()
     , _enemy(*this)
     , _blocklist()
 {
-    for (int i = 0; i < 21; i++){
+    for (int i = 0; i < 24; i++){
         _blocklist.push_back(new Block(*this));
     }
 }
@@ -32,7 +32,7 @@ bool SceneGame::onInit()
     for(auto itr = _blocklist.begin(); itr != _blocklist.end(); ++itr) {
         (*itr)->setPos(Vector2Df(BLOCKSIZE_X * 2 * i + 70, BLOCKSIZE_Y * 2 * j + 100));
         i++;
-        if (i >= 7) {
+        if (i >= 8) {
             i = 0;
             j++;
         }
@@ -53,19 +53,20 @@ void SceneGame::onTick()
     _player.onTick();
     _enemy.onTick();
 
-    if (_enemy.collisionDetectionWall()) {
-        kill();
-        GameMain::getInstance().getInput().reset();
-    }
-    _player.collisionDetection(&_enemy);
-
     for(auto itr = _blocklist.begin(); itr != _blocklist.end();) {
+        (*itr)->onTick();
         if ((*itr)->collisionDetection(&_enemy)) {
             itr = _blocklist.erase(itr);
             continue;
         }
         itr++;
     }
+
+    if (_enemy.collisionDetectionWall()) {
+        kill();
+        GameMain::getInstance().getInput().reset();
+    }
+    _player.collisionDetection(&_enemy);
 
     if (_blocklist.empty()) {
         kill();
