@@ -12,6 +12,7 @@ Enemy::Enemy(SceneBase& scene)
 {
     add_x = ENEMY_VELOCITY;
     add_y = -ENEMY_VELOCITY;
+    collision_count = 1;
     start_flg = false;
 }
 
@@ -100,4 +101,16 @@ boolean Enemy::collisionDetectionWall()
     wall_lt = Vector2Df(DWIDTH, DHEIGHT);
     wall_lb = Vector2Df(0, DHEIGHT);
     return Character::collisionDetection(wall_lt, wall_lb, ball);
+}
+
+void Enemy::setCollisionCount(int add_count)
+{
+    int before_speed = collision_count / SPEED_UP_COUNT;
+    collision_count += add_count;
+    int after_speed = collision_count / SPEED_UP_COUNT;
+    if (before_speed < after_speed) {
+        int add_speed = after_speed - before_speed;
+        add_x = (add_x < 0) ? add_x - add_speed : add_x + add_speed;
+        add_y = (add_y < 0) ? add_y - add_speed : add_y + add_speed;
+    }
 }

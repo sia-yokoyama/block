@@ -25,7 +25,7 @@ SceneGame::~SceneGame()
 bool SceneGame::onInit()
 {
     _player.setPos(Vector2Df(DWIDTH / 2, DHEIGHT - 100));
-    _enemy.setPos(Vector2Df(DWIDTH / 2, DHEIGHT - 100 - CHARASIZE / 2 - CHARASIZE));
+    _enemy.setPos(Vector2Df(DWIDTH / 2, DHEIGHT - 106 - (BARSIZE_Y / 2) - CHARASIZE));
     
     int i = 0;
     int j = 0;

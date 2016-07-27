@@ -45,6 +45,7 @@ boolean Block::collisionDetection(Enemy *ball)
     Vector2Df bar_rt = getPos() + Vector2Df(BLOCKSIZE_X , -BLOCKSIZE_Y);
     if (Character::collisionDetection(bar_lt, bar_rt, v_ball)) {
         ball->turnY();
+        ball->setCollisionCount();
         collision = true;
     }
 
@@ -52,6 +53,7 @@ boolean Block::collisionDetection(Enemy *ball)
     bar_rt = getPos() - Vector2Df(BLOCKSIZE_X , -BLOCKSIZE_Y);
     if (Character::collisionDetection(bar_lt, bar_rt, v_ball)) {
         ball->turnY();
+        ball->setCollisionCount();
         collision = true;
     }
 
@@ -59,6 +61,7 @@ boolean Block::collisionDetection(Enemy *ball)
     bar_rt = getPos() + Vector2Df(-BLOCKSIZE_X , BLOCKSIZE_Y);
     if (Character::collisionDetection(bar_lt, bar_rt, v_ball)) {
         ball->turnX();
+        ball->setCollisionCount();
         collision = true;
     }
 
@@ -66,6 +69,7 @@ boolean Block::collisionDetection(Enemy *ball)
     bar_rt = getPos() + Vector2Df(BLOCKSIZE_X , BLOCKSIZE_Y);
     if (Character::collisionDetection(bar_lt, bar_rt, v_ball)) {
         ball->turnX();
+        ball->setCollisionCount();
         collision = true;
     }
 

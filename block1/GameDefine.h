@@ -12,13 +12,15 @@
 #define TASK_PRIORITY_SCENE 20
 
 // ÉQÅ[ÉÄñ{ëÃä÷åW
-#define CHARASIZE   24
+#define CHARASIZE   12
 #define BARSIZE_X   72
 #define BARSIZE_Y   12
 #define BLOCKSIZE_X 36
 #define BLOCKSIZE_Y 12
 
 #define PLAYER_VELOCITY 5
-#define ENEMY_VELOCITY 3
+#define ENEMY_VELOCITY 5
+
+#define SPEED_UP_COUNT 5
 
 #endif // _GAME_DEFINE_H_

@@ -19,12 +19,14 @@ public:
     virtual void turnY();
 
     virtual boolean collisionDetectionWall();
+    virtual void setCollisionCount(int add_count = 1);
 
 private:
     SceneBase& _scene;
     boolean start_flg;
     int add_x;
     int add_y;
+    int collision_count;
     virtual void setTurnX();
     virtual void setTurnY();
 };
